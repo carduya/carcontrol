@@ -110,6 +110,8 @@ public class FullActivity extends Activity {
     fullActivity.buttonTransfer.setOnClickListener(v -> {
       clientView.changeMode.run(clientView.mode == 0 ? 1 : 0);
     });    
+
+    fullActivity.buttonRotate.setOnClickListener(v -> clientView.controlPacket.sendRotateEvent());
     
     if (!clientView.lightState) fullActivity.buttonLightOff.setImageResource(R.drawable.lightbulb);
     fullActivity.buttonLightOff.setOnClickListener(v -> {
@@ -122,7 +124,7 @@ public class FullActivity extends Activity {
         fullActivity.buttonLightOff.setImageResource(R.drawable.lightbulb_off);
         clientView.lightState = true;
       }      
-    });
+    });    
     
     fullActivity.buttonClose.setOnClickListener(v -> clientView.onClose.run());       
     
