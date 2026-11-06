@@ -190,7 +190,11 @@ public class ClientView implements TextureView.SurfaceTextureListener {
   private void reCalculateTextureViewSize() {
     if (maxSize == null || videoSize == null) return;
     // 根据原画面大小videoSize计算在maxSize空间内的最大缩放大小
-surfaceSize = new Pair<>(videoSize.first * maxSize.second / videoSize.second, maxSize.second);
+    int tmp1 = videoSize.second * maxSize.first / videoSize.first;
+    // 横向最大不会超出
+    if (maxSize.second > tmp1) surfaceSize = new Pair<>(maxSize.first, tmp1);
+      // 竖向最大不会超出
+    else surfaceSize = new Pair<>(videoSize.first * maxSize.second / videoSize.second, maxSize.second);
     // 更新大小
     ViewGroup.LayoutParams layoutParams = textureView.getLayoutParams();
     layoutParams.width = surfaceSize.first;
