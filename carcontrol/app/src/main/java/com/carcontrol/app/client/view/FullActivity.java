@@ -7,10 +7,8 @@ import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.Display;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.carcontrol.app.helper.PublicTools;
@@ -46,14 +44,8 @@ public class FullActivity extends Activity {
       if (left == oldLeft && top == oldTop && right == oldRight && bottom == oldBottom) return;
       updateMaxSize();
     });
-
-    FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
-            FrameLayout.LayoutParams.WRAP_CONTENT,
-            FrameLayout.LayoutParams.WRAP_CONTENT
-    );
-    lp.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
     // 更新textureView
-    fullActivity.textureViewLayout.addView(clientView.textureView, 0, lp);    
+    fullActivity.textureViewLayout.addView(clientView.textureView, 0);    
     setNavBarHide(AppData.setting.getDefaultShowNavBar());
     changeMode(-clientView.mode);
   }
