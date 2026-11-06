@@ -28,7 +28,7 @@ jobs:
         ./gradlew :app:assembleDebug  --stacktrace
         
     - name: Upload APK
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: carontrol
         path: ./carcontrol/app/build/outputs/apk/debug/*.apk
