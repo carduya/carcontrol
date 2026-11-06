@@ -129,7 +129,8 @@ public class FullActivity extends Activity {
     fullActivity.buttonClose.setOnClickListener(v -> clientView.onClose.run());       
     
     DisplayMetrics metrics = getResources().getDisplayMetrics();
-    orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+   if (metrics.widthPixels > metrics.heightPixels) orientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+    else orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
     setRequestedOrientation(orientation);
   }
   
